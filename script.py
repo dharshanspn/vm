@@ -200,8 +200,8 @@ admin_chatID = "6966110728"
 url = f'https://api.github.com/repos/{repo_owner}/{repo_name}/contents/{file_path}'
 
 # Fetch the JSON file metadata from the private repo
-headers = {'Authorization': f'token {token}'}
-response = requests.get(url, headers=headers)
+
+response = requests.get(url)
 
 if response.status_code == 200:
     # Debug: Print the full response to check the structure
