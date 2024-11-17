@@ -261,12 +261,13 @@ def refresh_account(account):
     
     
     # Set up Chrome WebDriver for this account
+    options = webdriver.ChromeOptions()
     options.add_argument('--headless')
     options.add_argument('--no-sandbox')
     options.add_argument('--disable-dev-shm-usage')
 
     # Each account gets its own Chrome instance
-    driver = webdriver.Chrome(ChromeDriverManager().install(), options=options)
+    driver = webdriver.Chrome(ChromeDriverManager().install())
 
     # Attempt to log in
     flag_login = True
