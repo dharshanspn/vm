@@ -188,7 +188,7 @@ y = 10  # Ending row index (exclusive) 15 Row pomints to 14 row, but since it st
 repo_owner = "dharshanspn"
 repo_name = "colect"
 file_path = "data.json"
-token = "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"
+token = "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"
 login_admin_bohit_token = "7980653551:AAGlL9xLHU-aMD6VwULWtkVQzkdwD0O8X98"
 admin_chatID = "6966110728"
 
