@@ -9,6 +9,8 @@ from datetime import datetime, timedelta
 import pytz
 import requests
 import multiprocessing
+from webdriver_manager.chrome import ChromeDriverManager
+
 
 
 troubleshooting_both_token = '7972332699:AAHs1ZGYQFXRtVELFou8zZ08IrWAE__cDRc'
@@ -259,13 +261,12 @@ def refresh_account(account):
     
     
     # Set up Chrome WebDriver for this account
-    options = webdriver.ChromeOptions()
     options.add_argument('--headless')
     options.add_argument('--no-sandbox')
     options.add_argument('--disable-dev-shm-usage')
 
     # Each account gets its own Chrome instance
-    driver = webdriver.Chrome(options=options)
+    driver = webdriver.Chrome(ChromeDriverManager().install(), options=options)
 
     # Attempt to log in
     flag_login = True
