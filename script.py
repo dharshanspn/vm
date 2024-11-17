@@ -8,10 +8,6 @@ import time
 from datetime import datetime, timedelta
 import pytz
 import requests
-import multiprocessing
-from webdriver_manager.chrome import ChromeDriverManager
-
-
 
 troubleshooting_both_token = '7972332699:AAHs1ZGYQFXRtVELFou8zZ08IrWAE__cDRc'
 troubleshooting_chatID =  '6966110728'
@@ -184,8 +180,8 @@ def refresh_chegg(driver,accept_option,start_time,end_time,user_both_token,user_
 
 
 
-x = 2  # Starting row index (inclusive) Row starts from 0 x=2 means Row 3
-y = 10  # Ending row index (exclusive) 15 Row pomints to 14 row, but since it starts from 0 it points to 15 row
+x = 12  # Starting row index (inclusive) Row starts from 0 x=2 means Row 3
+y = 17  # Ending row index (exclusive) 15 Row pomints to 14 row, but since it starts from 0 it points to 15 row
 
 
 # Access secrets from environment variables
@@ -204,10 +200,9 @@ admin_chatID = "6966110728"
 url = f'https://api.github.com/repos/{repo_owner}/{repo_name}/contents/{file_path}'
 
 # Fetch the JSON file metadata from the private repo
-
 response = requests.get(url)
 
-if response.status_code == 200:
+if True:
     # Debug: Print the full response to check the structure
     print("Response JSON structure:", response.json())
 
@@ -265,9 +260,14 @@ def refresh_account(account):
     options.add_argument('--headless')
     options.add_argument('--no-sandbox')
     options.add_argument('--disable-dev-shm-usage')
+    options.add_argument("--disable-images")  # Disables images loading
+    options.add_argument("--disable-extensions")
+
 
     # Each account gets its own Chrome instance
-    driver = webdriver.Chrome(ChromeDriverManager().install())
+    driver = webdriver.Chrome(options=options)
+    driver.set_window_size(800, 600)
+
 
     # Attempt to log in
     flag_login = True
